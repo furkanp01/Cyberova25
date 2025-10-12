@@ -19,10 +19,19 @@ def setValue(table,userChar):
 
 
 def printTable(table):
-     for i in range(0, 9, 3):
-        print(f"{table[i]} | {table[i+1]} | {table[i+2]}")
+    for i in range(0, 9, 3):
+        row = []
+        for j in range(3):
+            cell = table[i+j]
+            if cell == "X":
+                cell = f"\033[31mX\033[0m"  
+            elif cell == "O":
+                cell = f"\033[34mO\033[0m"  
+            row.append(cell)
+        print(" | ".join(row))
         if i < 6:
             print("---------")
+
             
             
 def evaluate(board):
