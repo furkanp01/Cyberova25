@@ -22,8 +22,14 @@ def Play(table, char):
     
     
 
+                    
+            
+
 def MaxMin(table, char, maxmin):
-    startVal = -500
+    if maxmin:
+        startVal = -500
+    else:
+        startVal = 500
     controlVal = helper.evaluate(table)
     if controlVal == char:
         return +1
@@ -32,22 +38,16 @@ def MaxMin(table, char, maxmin):
     if controlVal == "Berabere":
         return 0
     for i in range(0,9):
-       
-        
         if table[i] == "-":
             if maxmin:
                 
                 table[i] = char
                 newValue = MaxMin(table,char,False)
                 startVal = max(startVal,newValue)
-                table[i] = "-"
                 
             else:
-                table[i] = char
-                newValue = MaxMin(table,helper.GetRival(char),True)
-                startVal = min(startVal,newValue)
-                table[i] = "-"
-                
+                table[i] = helper.GetRival(char)
+                newValue = MaxMin(table,char,True)
+                startVal = min(startVal,newValue)        
+            table[i] = "-"
     return startVal
-                    
-            
