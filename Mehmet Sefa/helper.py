@@ -28,20 +28,22 @@ def printTable(table):
             
 def evaluate(board):
     for i in range(0, 9, 3):
-        if board[i] == board[i+1] == board[i+2] != " ":
+        if board[i] == board[i+1] == board[i+2] != "-":
             return board[i]
-
-    for i in range(3):
-        if board[i] == board[i+3] == board[i+6] != " ":
-            return board[i]
-
-    if board[0] == board[4] == board[8] != " ":
-        return board[0]
-    if board[2] == board[4] == board[6] != " ":
-        return board[2]
     
-    return False
+    for i in range(3):
+        if board[i] == board[i+3] == board[i+6] != "-":
+            return board[i]
+    
+    if board[0] == board[4] == board[8] != "-":
+        return board[0]
+    if board[2] == board[4] == board[6] != "-":
+        return board[2]
 
+    if "-" not in board:
+        return "Berabere"  
+
+    return None
 
 
 
@@ -52,3 +54,10 @@ def GetRival(char):
     if char == "O":
         l = "X" 
     return l
+
+
+
+def GetFirstEmptyIndex(table):
+    for i in range(0,9):
+        if table[i] == "-":
+            return i
