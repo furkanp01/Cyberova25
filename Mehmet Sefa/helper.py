@@ -24,7 +24,7 @@ def printTable(table):
         if i < 6:
             print("---------")
             
-            
+
             
 def evaluate(board):
     for i in range(0, 9, 3):
@@ -41,3 +41,14 @@ def evaluate(board):
         return board[2]
     
     return False
+
+
+
+
+def GetRival(char):
+    l = ""
+    if char == "X":
+        l = "O"
+    if char == "O":
+        l = "X" 
+    return l
