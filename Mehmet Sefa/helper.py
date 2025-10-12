@@ -24,7 +24,6 @@ def printTable(table):
         if i < 6:
             print("---------")
             
-
             
 def evaluate(board):
     for i in range(0, 9, 3):
