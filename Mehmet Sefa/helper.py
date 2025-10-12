@@ -7,13 +7,14 @@ def setValue(table,userChar):
         if selected == "-":
             table[index-1]  = userChar
             printTable(table)
-            
         else:
+            print("Seçmek istediğin alan dolu yenisini gir")
             return setValue(table,userChar)
             
         
         
     except ValueError:
+        print("sadece 1-9 arası sayıları gir")
         return setValue(table,userChar)
 
 
@@ -22,3 +23,21 @@ def printTable(table):
         print(f"{table[i]} | {table[i+1]} | {table[i+2]}")
         if i < 6:
             print("---------")
+            
+            
+            
+def evaluate(board):
+    for i in range(0, 9, 3):
+        if board[i] == board[i+1] == board[i+2] != " ":
+            return board[i]
+
+    for i in range(3):
+        if board[i] == board[i+3] == board[i+6] != " ":
+            return board[i]
+
+    if board[0] == board[4] == board[8] != " ":
+        return board[0]
+    if board[2] == board[4] == board[6] != " ":
+        return board[2]
+    
+    return False
